@@ -10,6 +10,7 @@
             {
                 $photofile = $temp;
                 $photoname = substr($photofile, 0, (strlen($photofile) - strlen(substr($photofile, strpos($photofile, '.'))))); // strip extension
+                $photoname = substr($photoname, strripos($photoname, '/') + 1); // remove any folder prefixes
                 $photoname = str_replace('-', ' ', $photoname); // replace hyphens with spaces
                 $photoname = preg_replace('/(?<=\d).(?=\d)/', '', $photoname); // remove character between image dimensions
                 $photoname = preg_replace('/[0-9]+/', '', $photoname); // remove all numbers
@@ -106,7 +107,7 @@
                                             if (empty($error))
                                             {
                                                 echo "<h3 class=\"major\">Photo - \"$photoname\"</h3><br>";
-                                                echo "<a href=\"images/$photofile\" class=\"image\"><img src=\"images/$photofile\" alt=\"$photoname\" style=\"max-width: 100%; max-height: 500px;\"></a>";
+                                                echo "<a href=\"images/$photofile\" class=\"image\"><img src=\"images/$photofile\" alt=\"$photoname\" style=\"max-width: 100%; max-height: 65vh;\"></a>";
                                             }
                                             else
                                             {
