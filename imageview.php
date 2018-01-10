@@ -10,7 +10,8 @@
             {
                 $photofile = $temp;
                 $photoname = substr($photofile, 0, (strlen($photofile) - strlen(substr($photofile, strpos($photofile, '.'))))); // strip extension
-                $photoname = substr($photoname, strripos($photoname, '/') + 1); // remove any folder prefixes
+                if (strpos($photoname, '/') !== FALSE)
+                    $photoname = substr($photoname, strripos($photoname, '/') + 1); // remove any folder prefixes
                 $photoname = str_replace('-', ' ', $photoname); // replace hyphens with spaces
                 $photoname = preg_replace('/(?<=\d).(?=\d)/', '', $photoname); // remove character between image dimensions
                 $photoname = preg_replace('/[0-9]+/', '', $photoname); // remove all numbers
