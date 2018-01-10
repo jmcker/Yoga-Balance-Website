@@ -1,41 +1,41 @@
 /*
-	Solid State by HTML5 UP
-	html5up.net | @n33co
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+    Solid State by HTML5 UP
+    html5up.net | @n33co
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
 (function($) {
 
-	"use strict";
+    "use strict";
 
-	skel.breakpoints({
-		xlarge:	'(max-width: 1680px)',
-		large:	'(max-width: 1280px)',
-		medium:	'(max-width: 980px)',
-		small:	'(max-width: 736px)',
-		xsmall:	'(max-width: 480px)'
-	});
+    skel.breakpoints({
+        xlarge:    '(max-width: 1680px)',
+        large:    '(max-width: 1280px)',
+        medium:    '(max-width: 980px)',
+        small:    '(max-width: 736px)',
+        xsmall:    '(max-width: 480px)'
+    });
 
-	$(function() {
+    $(function() {
 
-		var	$window = $(window),
-			$body = $('body'),
-			$header = $('#header'),
-			$banner = $('#banner');
+        var    $window = $(window),
+            $body = $('body'),
+            $header = $('#header'),
+            $banner = $('#banner');
 
-		// Disable animations/transitions until the page has loaded.
-			$body.addClass('is-loading');
+        // Disable animations/transitions until the page has loaded.
+            $body.addClass('is-loading');
 
-			$window.on('load', function() {
+            $window.on('load', function() {
 
                 // Wait for header image to load before showing the banner
                 var img = new Image();
                 img.onload = function() {
 
                     window.setTimeout(function() {
-					    $body.removeClass('is-loading');
+                        $body.removeClass('is-loading');
                         $banner.css('opacity', '1');
-				    }, 100);
+                    }, 100);
 
                 }
                 img.src = "../../images/yoga-balance-inc-compressed.png";
@@ -44,137 +44,137 @@
                 if (img.complete) 
                     img.onload();
 
-			});
+            });
 
-		// Fix: Placeholder polyfill.
-			$('form').placeholder();
+        // Fix: Placeholder polyfill.
+            $('form').placeholder();
 
-		// Prioritize "important" elements on medium.
-			skel.on('+medium -medium', function() {
-				$.prioritize(
-					'.important\\28 medium\\29',
-					skel.breakpoint('medium').active
-				);
-			});
+        // Prioritize "important" elements on medium.
+            skel.on('+medium -medium', function() {
+                $.prioritize(
+                    '.important\\28 medium\\29',
+                    skel.breakpoint('medium').active
+                );
+            });
 
-		// Header.
-			if (skel.vars.IEVersion < 9)
-				$header.removeClass('alt');
+        // Header.
+            if (skel.vars.IEVersion < 9)
+                $header.removeClass('alt');
 
-			if ($banner.length > 0
-			&&	$header.hasClass('alt')) {
+            if ($banner.length > 0
+            &&    $header.hasClass('alt')) {
 
-				$window.on('resize', function() { $window.trigger('scroll'); });
+                $window.on('resize', function() { $window.trigger('scroll'); });
 
-				$banner.scrollex({
-					bottom:		$header.outerHeight(),
-					terminate:	function() { $header.removeClass('alt'); },
-					enter:		function() { $header.addClass('alt'); },
-					leave:		function() { $header.removeClass('alt'); }
-				});
+                $banner.scrollex({
+                    bottom:        $header.outerHeight(),
+                    terminate:    function() { $header.removeClass('alt'); },
+                    enter:        function() { $header.addClass('alt'); },
+                    leave:        function() { $header.removeClass('alt'); }
+                });
 
-			}
+            }
 
-		// Menu.
-			var $menu = $('#menu');
+        // Menu.
+            var $menu = $('#menu');
 
-			$menu._locked = false;
+            $menu._locked = false;
 
-			$menu._lock = function() {
+            $menu._lock = function() {
 
-				if ($menu._locked)
-					return false;
+                if ($menu._locked)
+                    return false;
 
-				$menu._locked = true;
+                $menu._locked = true;
 
-				window.setTimeout(function() {
-					$menu._locked = false;
-				}, 350);
+                window.setTimeout(function() {
+                    $menu._locked = false;
+                }, 350);
 
-				return true;
+                return true;
 
-			};
+            };
 
-			$menu._show = function() {
+            $menu._show = function() {
 
-				if ($menu._lock())
-					$body.addClass('is-menu-visible');
+                if ($menu._lock())
+                    $body.addClass('is-menu-visible');
 
-			};
+            };
 
-			$menu._hide = function() {
+            $menu._hide = function() {
 
-				if ($menu._lock())
-					$body.removeClass('is-menu-visible');
+                if ($menu._lock())
+                    $body.removeClass('is-menu-visible');
 
-			};
+            };
 
-			$menu._toggle = function() {
+            $menu._toggle = function() {
 
-				if ($menu._lock())
-					$body.toggleClass('is-menu-visible');
+                if ($menu._lock())
+                    $body.toggleClass('is-menu-visible');
 
-			};
+            };
 
-			$menu
-				.appendTo($body)
-				.on('click', function(event) {
+            $menu
+                .appendTo($body)
+                .on('click', function(event) {
 
-					event.stopPropagation();
+                    event.stopPropagation();
 
-					// Hide.
-						$menu._hide();
+                    // Hide.
+                        $menu._hide();
 
-				})
-				.find('.inner')
-					.on('click', '.close', function(event) {
+                })
+                .find('.inner')
+                    .on('click', '.close', function(event) {
 
-						event.preventDefault();
-						event.stopPropagation();
-						event.stopImmediatePropagation();
+                        event.preventDefault();
+                        event.stopPropagation();
+                        event.stopImmediatePropagation();
 
-						// Hide.
-							$menu._hide();
+                        // Hide.
+                            $menu._hide();
 
-					})
-					.on('click', function(event) {
-						event.stopPropagation();
-					})
-					.on('click', 'a', function(event) {
+                    })
+                    .on('click', function(event) {
+                        event.stopPropagation();
+                    })
+                    .on('click', 'a', function(event) {
 
-						var href = $(this).attr('href');
+                        var href = $(this).attr('href');
 
-						event.preventDefault();
-						event.stopPropagation();
+                        event.preventDefault();
+                        event.stopPropagation();
 
-						// Hide.
-							$menu._hide();
+                        // Hide.
+                            $menu._hide();
 
-						// Redirect.
-							window.setTimeout(function() {
-								window.location.href = href;
-							}, 350);
+                        // Redirect.
+                            window.setTimeout(function() {
+                                window.location.href = href;
+                            }, 350);
 
-					});
+                    });
 
-			$body
-				.on('click', 'a[href="#menu"]', function(event) {
+            $body
+                .on('click', 'a[href="#menu"]', function(event) {
 
-					event.stopPropagation();
-					event.preventDefault();
+                    event.stopPropagation();
+                    event.preventDefault();
 
-					// Toggle.
-						$menu._toggle();
+                    // Toggle.
+                        $menu._toggle();
 
-				})
-				.on('keydown', function(event) {
+                })
+                .on('keydown', function(event) {
 
-					// Hide on escape.
-						if (event.keyCode == 27)
-							$menu._hide();
+                    // Hide on escape.
+                        if (event.keyCode == 27)
+                            $menu._hide();
 
-				});
+                });
 
-	});
+    });
 
 })(jQuery);
