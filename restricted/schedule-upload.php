@@ -13,7 +13,7 @@
 if (isset($_POST['submit']))
 {
     $month = $_POST['month'];
-    $overwritecurrent = $_POST['overwritecurrent'];
+    $overwritecurrent = isset($_POST['overwritecurrent']);
     $filename = $_FILES["file"]["name"];
     $file_basename = substr($filename, 0, strripos($filename, '.')); // get file name
     $file_ext = substr($filename, strripos($filename, '.')); // get file extension
@@ -54,7 +54,7 @@ if (isset($_POST['submit']))
         else
         {
             copy($_FILES["file"]["tmp_name"], "../downloads/schedule/" . $newfilename);
-            echo "<b>Files uploaded successfully.</b>";
+            echo "<b>Files uploaded successfully.</b><br><br>";
         }
         
         echo "<iframe src=\"../downloads/schedule/\" id=\"fileviewer\" width=\"90%\" height=\"600px\"></iframe>";
