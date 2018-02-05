@@ -9,6 +9,6 @@
 </IfModule>
 # php -- END cPanel-generated handler, do not edit
 
-RewriteEngine On
-RewriteCond %{SERVER_PORT} 80
-RewriteRule ^(.*)$ https://www.yogabalanceinc.com/$1 [R,L]
+#RewriteEngine On
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ http://www.yogabalanceinc.com/$1 [R,L]
