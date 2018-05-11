@@ -5,49 +5,61 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+
 <url>
-  <loc>http://yogabalanceinc.com/</loc>
-  <lastmod>2016-07-14T17:50:33+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/</loc>
+  <lastmod>2018-01-10T22:41:16+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>1.00</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/index.html</loc>
-  <lastmod>2016-07-14T17:50:33+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/index.html</loc>
+  <lastmod>2018-01-10T22:41:16+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/newyoga.html</loc>
-  <lastmod>2016-07-14T17:50:34+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/newyoga.html</loc>
+  <lastmod>2018-01-10T22:41:17+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/downloads/class-descriptions-yoga-balance.pdf</loc>
-  <lastmod>2016-07-14T17:48:45+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/downloads/class-descriptions-yoga-balance.pdf</loc>
+  <lastmod>2018-01-10T22:41:25+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/downloads/schedule/current-schedule-yoga-balance.pdf</loc>
-  <lastmod>2016-07-14T17:57:20+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/downloads/schedule/current-schedule-yoga-balance.pdf</loc>
+  <lastmod>2018-01-26T20:41:06+00:00</lastmod>
   <changefreq>monthly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/downloads/pricing-yoga-balance.pdf</loc>
-  <lastmod>2016-07-14T17:48:46+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/downloads/pricing-yoga-balance.pdf</loc>
+  <lastmod>2018-01-10T22:41:25+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/pictures.html</loc>
-  <lastmod>2016-07-14T18:02:04+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/pictures.html</loc>
+  <lastmod>2018-01-10T22:41:17+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.80</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/downloads/forms/registration-form-yoga-balance.pdf</loc>
-  <lastmod>2016-07-14T17:48:51+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/downloads/forms/registration-form-yoga-balance.pdf</loc>
+  <lastmod>2018-01-10T22:41:26+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.64</priority>
 </url>
 <url>
-  <loc>http://yogabalanceinc.com/downloads/forms/waiver-yoga-balance.pdf</loc>
-  <lastmod>2016-07-14T17:48:49+00:00</lastmod>
+  <loc>https://www.yogabalanceinc.com/downloads/forms/waiver-yoga-balance.pdf</loc>
+  <lastmod>2018-01-10T22:41:26+00:00</lastmod>
   <changefreq>yearly</changefreq>
+  <priority>0.64</priority>
 </url>
+
+
 </urlset>
