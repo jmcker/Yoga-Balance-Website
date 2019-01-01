@@ -74,7 +74,7 @@
                     <header id="header">
                         <h1><a href="index.html">Yoga Balance</a></h1>
                         <nav>
-                            <a href="http://www.yelp.com/biz/yoga-balance-grayslake" class="social" onclick="trackOutboundLink('Yelp - Header');" target="_blank">
+                            <a href="https://www.yelp.com/biz/yoga-balance-grayslake" class="social" onclick="trackOutboundLink('Yelp - Header');" target="_blank">
                                 <i class="fa fa-yelp fa-lg"></i>
                             </a>
                             <a href="https://www.facebook.com/Yoga-Balance-Inc-949307748415341/" class="social" onclick="trackOutboundLink('Facebook - Header');" target="_blank">
@@ -104,7 +104,7 @@
                             <div class="wrapper">
                                 <div class="inner">
                                     <div style="margin-bottom: 3em; margin-top: -1em; text-align: center;">
-                                        <?php 
+                                        <?php
                                             if (empty($error))
                                             {
                                                 echo "<h3 class=\"major\">Photo - \"$photoname\"</h3><br>";
@@ -127,7 +127,7 @@
                         <div class="inner">
                             <h2 class="major">Get in touch</h2>
                             <p></p>
-                            
+
                             <!-- Begin MailChimp Signup Form -->
                             <div class="mailchimp" id="mc_embed_signup">
                                 <form action="//facebook.us11.list-manage.com/subscribe/post?u=7d18fc5a03ab56d88426b1f19&amp;id=a3d60e38d9" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" onsubmit="trackFormSubmission('Mailchimp Subscription - Image View');" target="_blank" novalidate>
@@ -152,7 +152,7 @@
                                         <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7d18fc5a03ab56d88426b1f19_a3d60e38d9" tabindex="-1" value=""></div>
                                         <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                                     </div><br />
-                                    <a href="http://eepurl.com/b7yUxL" target="_blank">Powered by MailChimp</a>
+                                    <a href="https://eepurl.com/b7yUxL" target="_blank">Powered by MailChimp</a>
                                 </form>
                             </div>
                             <!--End MailChimp Signup Form-->
@@ -166,10 +166,10 @@
                                 <li class="fa-phone">(847) 807-1508</li>
                                 <li class="fa-envelope"><a href="mailto:lisa.yogabalance@gmail.com" target="_blank">lisa.yogabalance@gmail.com</a></li>
                                 <li class="fa-facebook"><a href="https://www.facebook.com/Yoga-Balance-Inc-949307748415341/" onclick="trackOutboundLink('Facebook - Footer');" target="_blank">facebook.com/Yoga-Balance-Inc</a></li>
-                                <li class="fa-yelp"><a href="http://www.yelp.com/biz/yoga-balance-grayslake" onclick="trackOutboundLink('Yelp - Footer');" target="_blank">yelp.com/biz/yoga-balance-grayslake</a></li>
+                                <li class="fa-yelp"><a href="https://www.yelp.com/biz/yoga-balance-grayslake" onclick="trackOutboundLink('Yelp - Footer');" target="_blank">yelp.com/biz/yoga-balance-grayslake</a></li>
                             </ul>
                             <ul class="copyright">
-                                <li>&copy; Yoga Balance Inc. All rights reserved.</li><li>Design: <a href="mailto:webmaster@yogabalanceinc.com" target="_blank">Jack McKernan</a></li><li>Template: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+                                <li>&copy; Yoga Balance Inc. All rights reserved.</li><li>Design: <a href="mailto:webmaster@yogabalanceinc.com" target="_blank">Jack McKernan</a></li><li>Template: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
                             </ul>
                         </div>
                     </section>
