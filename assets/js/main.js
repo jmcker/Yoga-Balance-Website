@@ -38,10 +38,10 @@
                     }, 100);
 
                 }
-                img.src = "../../images/yoga-balance-inc-compressed.png";
+                img.src = "images/yoga-balance-inc-compressed.png";
 
                 // Check if image has already loaded before the onload hander was set
-                if (img.complete) 
+                if (img.complete)
                     img.onload();
 
             });
