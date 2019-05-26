@@ -1,45 +1,7 @@
-<?php
-    $validext = array(".jpg", ".jpeg", ".png", ".gif", ".bmp");
-    if (!empty($_GET['photo']))
-    {
-        $temp = $_GET['photo'];
-        if (file_exists("images/$temp"))
-        {
-            $ext = substr($temp, strpos($temp, '.')); // capture extension
-            if (in_array($ext, $validext))
-            {
-                $photofile = $temp;
-                $photoname = substr($photofile, 0, (strlen($photofile) - strlen(substr($photofile, strpos($photofile, '.'))))); // strip extension
-                if (strpos($photoname, '/') !== FALSE)
-                    $photoname = substr($photoname, strripos($photoname, '/') + 1); // remove any folder prefixes
-                $photoname = str_replace('-', ' ', $photoname); // replace hyphens with spaces
-                $photoname = preg_replace('/(?<=\d).(?=\d)/', '', $photoname); // remove character between image dimensions
-                $photoname = preg_replace('/[0-9]+/', '', $photoname); // remove all numbers
-                $photoname = trim(ucwords($photoname)); // trim string and capitalize first letter of every word
-            }
-            else
-            {
-                $error = "Sorry, the file <i> \"$temp\" </i> does not have the proper extension.";
-                $photoname = "Error";
-            }
-        }
-        else
-        {
-            $error = "We're sorry. We can't seem to find that file.";
-            $photoname= "Error";
-        }
-    }
-    else
-    {
-        $error = "We're sorry. We can't seem to find that file.";
-        $photoname= "Error";
-    }
-?>
-
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title><?php echo $photoname?> - Yoga Balance</title>
+        <title>View Image - Yoga Balance</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -104,17 +66,9 @@
                             <div class="wrapper">
                                 <div class="inner">
                                     <div style="margin-bottom: 3em; margin-top: -1em; text-align: center;">
-                                        <?php
-                                            if (empty($error))
-                                            {
-                                                echo "<h3 class=\"major\">Photo - \"$photoname\"</h3><br>";
-                                                echo "<a href=\"images/$photofile\" class=\"image\"><img src=\"images/$photofile\" alt=\"$photoname\" style=\"max-width: 100%; max-height: 65vh;\"></a>";
-                                            }
-                                            else
-                                            {
-                                                echo "<h3 class=\"major\">$error</h3><br>";
-                                            }
-                                        ?>
+                                        <div id="image_content_container">
+                                            <h3 class="major">Loading...</h3>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -183,6 +137,120 @@
             <script src="assets/js/util.js"></script>
             <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
             <script src="assets/js/main.js"></script>
+            <script>
+
+                container = document.getElementById("image_content_container");
+                container_text = container.getElementsByTagName("h3")[0];
+                container_content = null;
+                validExt = [".jpg", ".jpeg", ".png", ".gif", ".bmp"];
+
+                String.prototype.ucwords = function() {
+                    words = this.split(' ');
+
+                    for (var i = 0; i < words.length; i++) {
+                        words[i] = words[i].charAt(0).toUpperCase() + words[i].substr(1);
+                    }
+
+                    return words.join(' ');
+                }
+
+                function updateText(msg) {
+                    container_text.innerHTML = msg;
+                }
+
+                function processHash()  {
+                    hash = window.location.hash;
+
+                    if (container_content) {
+                        container_content.remove();
+                        container_content = null;
+                    }
+
+                    if (hash) {
+
+                        // Strip hash
+                        filePath = hash.substr(1);
+                        console.log(filePath)
+
+                        fileExt = filePath.substr(filePath.lastIndexOf('.'));
+                        console.log(fileExt);
+
+                        if (validExt.indexOf(fileExt) >= 0) {
+
+                            // Strip extension
+                            displayName = filePath.substr(0, filePath.lastIndexOf('.'));
+                            console.log(displayName);
+
+                            // Strip leading path
+                            if (displayName.indexOf('/') >= 0) {
+                                displayName = displayName.substr(displayName.lastIndexOf('/') + 1);
+                                console.log(displayName);
+                            }
+
+                            // Hyphens to spaces
+                            displayName = displayName.replace(/-/g, ' ');
+                            console.log(displayName);
+
+                            // Remove image dimensions
+                            displayName = displayName.replace(/(\d)+x(\d)+/g, '');
+                            console.log(displayName);
+
+                            displayName = displayName.trim();
+                            displayName = displayName.ucwords();
+
+                            fullPath = "images/" + filePath;
+
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("HEAD", fullPath);
+                            xhr.onreadystatechange = function() {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    link = document.createElement('a');
+                                    link.href = fullPath;
+                                    link.className = 'image';
+
+                                    img = document.createElement('img');
+                                    img.src = fullPath;
+                                    img.alt = displayName;
+                                    img.style.maxWidth = '100%';
+                                    img.style.maxHeight = '70vh';
+
+                                    updateText(displayName);
+
+                                    link.appendChild(img);
+                                    container.appendChild(link);
+
+                                    document.title = displayName + " - Yoga Balance";
+
+                                    container_content = link;
+
+                                } else if (xhr.readyState === 4) {
+                                    updateText("Sorry, we couldn't find the file you're looking for.");
+                                    return
+                                }
+                            }
+                            xhr.send();
+
+                        } else {
+                            updateText("Sorry, the requested file does not have a valid extension!");
+                            return;
+                        }
+                    } else {
+                        updateText("No image selected!");
+
+                        p = document.createElement('p');
+                        p.innerHTML = 'Check out the photo gallery <a href="pictures.html">here</a>.';
+                        container.appendChild(p);
+
+                        container_content = p;
+
+                        return
+                    }
+                }
+
+                processHash();
+                window.addEventListener("hashchange", processHash);
+
+            </script>
             <script>
                 (function (i, s, o, g, r, a, m) {
                     i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
