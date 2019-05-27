@@ -170,30 +170,24 @@
 
                         // Strip hash
                         filePath = hash.substr(1);
-                        console.log(filePath)
 
                         fileExt = filePath.substr(filePath.lastIndexOf('.'));
-                        console.log(fileExt);
 
                         if (validExt.indexOf(fileExt) >= 0) {
 
                             // Strip extension
                             displayName = filePath.substr(0, filePath.lastIndexOf('.'));
-                            console.log(displayName);
 
                             // Strip leading path
                             if (displayName.indexOf('/') >= 0) {
                                 displayName = displayName.substr(displayName.lastIndexOf('/') + 1);
-                                console.log(displayName);
                             }
 
                             // Hyphens to spaces
                             displayName = displayName.replace(/-/g, ' ');
-                            console.log(displayName);
 
                             // Remove image dimensions
                             displayName = displayName.replace(/(\d)+x(\d)+/g, '');
-                            console.log(displayName);
 
                             displayName = displayName.trim();
                             displayName = displayName.ucwords();
