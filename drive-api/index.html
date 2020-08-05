@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Schedule Upload - Yoga Balance</title>
+        <style>
+            body {
+                line-height: 2;
+            }
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+
+            .red-text {
+                color: red;
+            }
+            .bold {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>New Upload:</h3>
+
+        <div>
+            <button id="drive_auth_button">Sign in</button>
+        </div>
+        <br>
+
+        <label>Month on Schedule:</label>
+        <input id="month_input" type="text" placeholder="(Optional)"><br>
+        <input id="file_input" type="file" accept=".pdf" required>
+
+        <label>Overwrite current schedule:</label>
+        <input id="overwrite_current" type="checkbox" checked>
+        <br>
+        <br>
+
+        <button id="submit_button" type="button">Submit</button>
+
+        <div id="status_box">&nbsp;</div>
+
+        <h3>Current Schedule Folder:</h3>
+
+        <!--- Filled by drive.js --->
+        <table id="file_viewer" width="100%"></table>
+
+        <script src="drive.js"></script>
+        <script async defer
+            src="https://apis.google.com/js/api.js"
+            onload="this.onload=function(){}; gapiReady();"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+        </script>
+
+    </body>
+</html>
