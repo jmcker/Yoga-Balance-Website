@@ -46,8 +46,12 @@ async function initClient() {
             scope: SCOPES
         });
     } catch (e) {
-        console.dir(e);
-        console.error('Could not initialize.');
+        if (e.details && e.details.toLocaleLowerCase().includes('cookie')) {
+            setError('Please enable cookies');
+            noResults('Please enable cookies');
+        }
+
+        console.error('Could not initialize', e);
         return;
     }
 
@@ -147,7 +151,7 @@ async function listFiles() {
             'fields': `nextPageToken, files(${FIELDS.join(', ')})`
         });
     } catch(e) {
-        console.error('Could not fetch file list.', e);
+        console.error('Could not fetch file list', e);
         noResults('Could not fetch file list: ' + e);
         return;
     }
