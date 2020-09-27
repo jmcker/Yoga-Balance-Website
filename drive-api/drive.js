@@ -1,3 +1,5 @@
+'use strict';
+
 const CLIENT_ID = '482231023052-5guceakfvvmdjabd2jtoitb42iuibp8u.apps.googleusercontent.com';
 const API_KEY = 'AIzaSyDrpRp3-N2XU1rGB7R1tWljypOyj5XAvA4';
 
@@ -64,7 +66,8 @@ async function initClient() {
 
 function updateSignInStatus() {
     if (isSignedIn()) {
-        driveAuthButton.innerHTML = 'Sign out';
+        let profile = gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile();
+        driveAuthButton.innerHTML = `${profile.getEmail()} (Sign out)`;
     } else {
         driveAuthButton.innerHTML = 'Sign in';
     }
@@ -180,7 +183,7 @@ async function listFiles() {
             fileViewer.appendChild(row);
         }
     } else {
-        noResults();
+        noResults('No files found. You may not have access to the folder.');
     }
 
     setStatus('&nbsp;');
@@ -270,6 +273,7 @@ async function makeFileRequest(metadata, file, id, method) {
     form.append('file', file);
 
     let response;
+    let json;
     try {
         // response = await gapi.client.request({
         //     'path': `upload/drive/v3/files/${id}`,
@@ -288,9 +292,17 @@ async function makeFileRequest(metadata, file, id, method) {
         });
 
         json = await response.json();
+
+        if (response.status > 299 || json['error']) {
+            throw `Error: ${json['error']['message']} (HTTP status: ${response.status})`;
+        }
     } catch (e) {
+        console.dir(response);
+        console.dir(json);
+
         console.error(e);
-        errorBox.innerHTML = e;
+        setError(e);
+        throw e;
     }
 
     console.dir(response);
